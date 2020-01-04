@@ -20,13 +20,15 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		//$this->load->view('welcome_message');
+	    $this->load->view('html/RegistrationForm.html');
 	}
 	
 	public function samplefunction()
 	{
-	    echo "This is Sample Function \n";	    
+	    echo "This is Sample Function from Controller"."<br>";	    
 	    $this->load->model("user");
-	    echo $this->user->test_main();
+	    $this->user->test_main();
 	}
 }
+?>
