@@ -25,6 +25,8 @@ class Welcome extends CI_Controller {
 	
 	public function samplefunction()
 	{
-	    echo "This is Sample Function";
+	    echo "This is Sample Function \n";	    
+	    $this->load->model("user");
+	    echo $this->user->test_main();
 	}
 }

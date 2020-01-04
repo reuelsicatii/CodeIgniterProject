@@ -836,7 +836,7 @@ class CI_Encryption {
 
 	// --------------------------------------------------------------------
 
-	/**
+	/*
 	 * HKDF
 	 *
 	 * @link	https://tools.ietf.org/rfc/rfc5869.txt

@@ -125,7 +125,7 @@ class CI_Cache_file extends CI_Driver {
 
 	// ------------------------------------------------------------------------
 
-	/**
+	/*
 	 * Increment a raw value
 	 *
 	 * @param	string	$id	Cache ID
@@ -153,7 +153,7 @@ class CI_Cache_file extends CI_Driver {
 
 	// ------------------------------------------------------------------------
 
-	/**
+	/*
 	 * Decrement a raw value
 	 *
 	 * @param	string	$id	Cache ID

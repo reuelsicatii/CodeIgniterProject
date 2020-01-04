@@ -99,7 +99,7 @@ class CI_Table {
 	 */
 	public $empty_cells	= '';
 
-	/**
+	/*
 	 * Callback for custom table layout
 	 *
 	 * @var function
