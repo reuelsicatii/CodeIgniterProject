@@ -26,7 +26,8 @@ class User extends CI_Controller {
     public function details()
     {
         $this->load->model("user_model");
-        $dataArray['userArray'] = $this->user_model->get_dataArray();
-        $this->load->view("user_details", $dataArray);
+        $data['userArray'] = $this->user_model->get_dataArray();
+        $data['userArrayArray'] = $this->user_model->get_dataArrayArray();
+        $this->load->view("user_details", $data);
     }
 }

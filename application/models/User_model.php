@@ -20,5 +20,24 @@ class User_model extends CI_Model
             "ConfirmPassword" => "WengSicat87"
         ];
     }
+    
+    public function get_dataArrayArray()
+    {
+        return [
+            [
+                "Username" => "JenSicat",
+                "Email" => "jen@axadra.com",
+                "Password" => "jenpukingking",
+                "ConfirmPassword" => "jenpukingking"
+            ],
+            [
+                "Username" => "StarSicat",
+                "Email" => "star@axadra.com",
+                "Password" => "stariray",
+                "ConfirmPassword" => "stariray"
+            ]
+        ];
+    }
+    
 }
 ?>

@@ -34,6 +34,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td><?= $userArray['Password'] ?></td>
 						<td><?= $userArray['ConfirmPassword'] ?></td>
 					</tr>
+					<?php foreach ($userArrayArray as $userArray): ?> 
+					<tr>
+						<th scope="row">1</th>
+						<td><?= $userArray['Username'] ?></td>
+						<td><?= $userArray['Email'] ?></td>
+						<td><?= $userArray['Password'] ?></td>
+						<td><?= $userArray['ConfirmPassword'] ?></td>
+					</tr>
+					<?php endforeach; ?>
+
 				</tbody>
 			</table>
 
@@ -46,6 +56,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <?php
 echo "<pre>";
 print_r($userArray);
+echo "</pre>";
+
+echo "<pre>";
+print_r($userArrayArray);
 echo "</pre>";
 
 ?>
