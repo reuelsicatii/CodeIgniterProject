@@ -34,6 +34,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td><?= $userArray['Password'] ?></td>
 						<td><?= $userArray['ConfirmPassword'] ?></td>
 					</tr>
+
+					<!--One way of WRITING it-->
+					<!--=============================================================================-->
+					<?php
+
+                        foreach ($userArrayArray as $userArray) {
+                            echo "
+            				    <tr>
+            						<th scope=\"row\">1</th>
+            						<td>" . $userArray['Username'] . "</td>
+            						<td>" . $userArray['Email'] . "</td>
+            						<td>" . $userArray['Password'] . "</td>
+            						<td>" . $userArray['ConfirmPassword'] . "</td>
+            					</tr>
+                            ";
+                        }
+                     ?>				
+				
+					
+					<!--Other way of WRITING it-->
+					<!--=============================================================================-->
 					<?php foreach ($userArrayArray as $userArray): ?> 
 					<tr>
 						<th scope="row">1</th>
@@ -42,7 +63,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td><?= $userArray['Password'] ?></td>
 						<td><?= $userArray['ConfirmPassword'] ?></td>
 					</tr>
-					<?php endforeach; ?>
+					<?php endforeach; ?>					
+					
 					<?php foreach ($userArrayArrayfromDB as $userArray): ?> 
 					<tr>
 						<th scope="row">1</th>
@@ -76,6 +98,5 @@ echo "</pre>";
 echo "<pre>";
 print_r($userArrayArrayfromDB);
 echo "</pre>";
-
 
 ?>
