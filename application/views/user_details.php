@@ -75,6 +75,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</tr>
 					<?php endforeach; ?>
 					
+					<?php foreach ($userArrayArrayfromDBusingQueryBuilder as $userArray): ?> 
+					<tr>
+						<th scope="row">1</th>
+						<td><?= $userArray['username'] ?></td>
+						<td><?= $userArray['email'] ?></td>
+						<td><?= $userArray['password_one'] ?></td>
+						<td><?= $userArray['password_two'] ?></td>
+					</tr>
+					<?php endforeach; ?>
 
 
 				</tbody>
@@ -97,6 +106,10 @@ echo "</pre>";
 
 echo "<pre>";
 print_r($userArrayArrayfromDB);
+echo "</pre>";
+
+echo "<pre>";
+print_r($userArrayArrayfromDBusingQueryBuilder);
 echo "</pre>";
 
 ?>

@@ -42,7 +42,22 @@ class User_model extends CI_Model
     
     public function get_dataArrayArrayfromDB(){
         $this->load->database();
+        
+        // Using QUERY
+        // ================================================
         $query = $this->db->query("SELECT * FROM registration");
+        
+        return $query->result_array();
+        
+    }
+    
+    public function get_dataArrayArrayfromDBusingQueryBuilder(){
+        $this->load->database();
+        
+        // Using QUERY BUILDER
+        // ================================================
+        $this->db->where('id >', "10");
+        $query = $this->db->get('registration');
         
         return $query->result_array();
         
