@@ -43,6 +43,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<td><?= $userArray['ConfirmPassword'] ?></td>
 					</tr>
 					<?php endforeach; ?>
+					<?php foreach ($userArrayArrayfromDB as $userArray): ?> 
+					<tr>
+						<th scope="row">1</th>
+						<td><?= $userArray['username'] ?></td>
+						<td><?= $userArray['email'] ?></td>
+						<td><?= $userArray['password_one'] ?></td>
+						<td><?= $userArray['password_two'] ?></td>
+					</tr>
+					<?php endforeach; ?>
+					
+
 
 				</tbody>
 			</table>
@@ -61,5 +72,10 @@ echo "</pre>";
 echo "<pre>";
 print_r($userArrayArray);
 echo "</pre>";
+
+echo "<pre>";
+print_r($userArrayArrayfromDB);
+echo "</pre>";
+
 
 ?>

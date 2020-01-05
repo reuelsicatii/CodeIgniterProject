@@ -39,5 +39,13 @@ class User_model extends CI_Model
         ];
     }
     
+    
+    public function get_dataArrayArrayfromDB(){
+        $this->load->database();
+        $query = $this->db->query("SELECT * FROM registration");
+        
+        return $query->result_array();
+        
+    }
 }
 ?>
