@@ -46,7 +46,7 @@ class Login extends CI_Controller
                 // thus still login
                 // redirect to Home Page
                 // ==============================================
-                $this->load->view('user_details');
+                $this->load->view('Home');
                 
             } else {
                 
@@ -81,7 +81,9 @@ class Login extends CI_Controller
                     );
                     // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('user_details');
+                    
+                    $result['userArrayArrayfromDB'] = $this->login_model->get_all();
+                    $this->load->view('Home',$result);
                 }
                 } else {
                     

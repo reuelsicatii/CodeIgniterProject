@@ -47,5 +47,19 @@ class Login_Model extends CI_Model
         
     }
     
+    function get_all(){
+        
+
+        $this->db->select('*');
+        $this->db->from('registration');
+        
+        $query = $this->db->get();
+        //var_dump($query->result_array());
+        return $query->result_array();
+        
+
+        
+    }
+    
 }
 ?>
