@@ -40,7 +40,7 @@ class Registration extends CI_Controller {
             //Transfering data to Model
             //==============================================
             $this->load->model('registration_model');
-            $this->registration_model->form_insert($data);
+            $this->registration_model->registration_insert($data);
             $data['message'] = 'Data Inserted Successfully';
             
             //Loading View

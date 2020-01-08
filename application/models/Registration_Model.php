@@ -3,7 +3,7 @@
 class Registration_Model extends CI_Model
 {
 
-    function form_insert($data)
+    function registration_insert($data)
     {
         $this->load->database();
         

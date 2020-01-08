@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registration Form</title>
+<title>Login Form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
@@ -22,27 +22,22 @@
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Registration Form</h1>
+
+		<h1>Login Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-			<?php if (isset($message)) {
-			    echo "<CENTER><h3 style=\"color: green;\">Data inserted successfully</h3></CENTER><br>";
-			}			
-			?>			
-				<form action="/CodeIgniterProject/Registration/add_user"
+		
+				<form action="/CodeIgniterProject/Login/authentication"
 					method="post">
-					<input class="text" type="text" name="username"
-						placeholder="Username" required=""> <input class="text email"
-						type="email" name="email" placeholder="Email" required=""> <input
-						class="text" type="password" name="password"
-						placeholder="Password" required=""> <input class="text w3lpass"
-						type="password" name="confirmpassword"
-						placeholder="Confirm Password" required=""> <input type="submit"
-						value="SIGNUP">
+					<input class="text" type="text" name="username" placeholder="Username" required=""> 
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					<input type="submit" value="LOGIN">
 				</form>
-				<p>
-					Don't have an Account? <a href="#"> Login Now!</a>
-				</p>
+				<?php                    
+                    if (isset($error_message)) {                        
+                        echo "<CENTER><h3 style=\"color: red;\">".$error_message."</h3></CENTER><br>";
+                        }
+                ?>	
 			</div>
 		</div>
 	</div>
