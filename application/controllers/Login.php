@@ -46,6 +46,8 @@ class Login extends CI_Controller
                 // thus still login
                 // redirect to Home Page
                 // ==============================================
+                $result['userArrayArrayfromDB'] = $this->login_model->get_all();
+                $this->load->view('Home',$result);                
                 $this->load->view('Home');
                 
             } else {
