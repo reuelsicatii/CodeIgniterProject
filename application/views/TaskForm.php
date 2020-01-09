@@ -47,29 +47,29 @@
 								<!-- Modal body -->
 								<div class="modal-body">
 									<form>
-										<div class="d-inline-flex">
-						
+										<div class="form-group d-inline-flex my-1">
+
 											</select> <select class="custom-select mx-1">
 												<option selected>Task Type</option>
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
-											</select>
-											
-											</select> <select class="custom-select mx-1">
+											</select> </select> <select class="custom-select mx-1">
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
 												<option value="Payroll">Payroll</option>
 											</select>
-											
-											<button class="btn btn-secondary flex-grow-1">NEW</button>
 
+											<button class="btn btn-secondary mx-1" disabled>COMPLETED</button>
 										</div>
-										<div class="form-group">
-											<label for="exampleInputPassword1">Password</label> <input
-												type="password" class="form-control"
-												id="exampleInputPassword1">
+										<div class="form-group my-1">
+											<label for="exampleInputPassword1">Start</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="exampleInputPassword1">End</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="exampleInputPassword1">Elapsed</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>											
 										</div>
 										<div class="form-group form-check">
 											<input type="checkbox" class="form-check-input"
