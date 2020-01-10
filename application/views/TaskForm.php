@@ -30,11 +30,10 @@
 			<div class="col-sm-10">
 				<div class="row py-1">
 					<!-- Button to Open the Modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#myModal">Create Task</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createTask">Create Task</button>
 
-					<!-- The Modal -->
-					<div class="modal" id="myModal">
+					<!-- The Modal:createTask -->
+					<div class="modal" id="createTask">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
@@ -49,19 +48,21 @@
 									<form>
 										<div class="form-group d-inline-flex my-1">
 
-											</select> <select class="custom-select mx-1">
+											<select class="custom-select mx-1" name="type">
 												<option selected>Task Type</option>
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
-											</select> </select> <select class="custom-select mx-1">
+											</select> 
+											
+											<select class="custom-select mx-1" name="department">											
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
 												<option value="Payroll">Payroll</option>
 											</select>
 
-											<button class="btn btn-secondary mx-1" disabled>COMPLETED</button>
+											<button class="btn btn-secondary mx-1" disabled>NEW</button>
 										</div>
 										<div class="form-group my-1">
 											<label for="exampleInputPassword1">Start</label> 
@@ -69,14 +70,62 @@
 											<label for="exampleInputPassword1">End</label> 
 											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
 											<label for="exampleInputPassword1">Elapsed</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>											
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="comment">Remarks:</label>
+  											<textarea class="form-control" rows="5" id="comment" name="remarks"></textarea>											
 										</div>
-										<div class="form-group form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">Check me out</label>
-										</div>
+					
 										<button type="submit" class="btn btn-primary">Create</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+	               <!-- The Modal:updateTask -->
+					<div class="modal" id="updateTask">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Update Task</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">
+									<form>
+										<div class="form-group d-inline-flex my-1">
+
+											<select class="custom-select mx-1" name="type">
+												<option selected>Task Type</option>
+												<option value="Bank Transaction">Bank Transaction</option>
+												<option value="Collection">Collection</option>
+												<option value="Govt Transaction">Govt Transaction</option>
+											</select> 
+											
+											<select class="custom-select mx-1" name="department">											
+												<option selected>Department</option>
+												<option value="Accounting">Accounting</option>
+												<option value="HR and Admin">HR and Admin</option>
+												<option value="Payroll">Payroll</option>
+											</select>
+
+											<button class="btn btn-secondary mx-1" disabled>NEW</button>
+										</div>
+										<div class="form-group my-1">
+											<label for="exampleInputPassword1">Start</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="exampleInputPassword1">End</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="exampleInputPassword1">Elapsed</label> 
+											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
+											<label for="comment">Remarks:</label>
+  											<textarea class="form-control" rows="5" id="comment" name="remarks"></textarea>											
+										</div>
+					
+										<button type="submit" class="btn btn-primary">Update</button>
 									</form>
 								</div>
 
@@ -85,6 +134,9 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					
 				</div>
 				<div class="row py-1">
 					<table class="table">
@@ -104,20 +156,21 @@
 								<td>Otto</td>
 								<td>@mdo</td>
 								<td>
+								
+									<div class="d-flex flex-column justify-content-center">
+									<button type="button" class="btn btn-info btn-sm my-1" data-toggle="modal" data-target="#updateTask">Update Task</button>
+									</div>									
 
 									<form class="d-flex flex-column justify-content-center"
-										action="/CodeIgniterProject/Task/action" method="post">
-
-
-										<input class="btn btn-primary btn-sm my-1" type="submit"
-											name="Update" value="Update" /> <input
-											class="btn btn-primary btn-sm my-1" type="submit"
-											name="Start" value="Start" /> <input
-											class="btn btn-success btn-sm my-1" type="submit"
-											name="Complete" value="Complete" />
-
-
+										action="/CodeIgniterProject/Task/start_pause" method="post">
+										<input class="btn btn-primary btn-sm my-1" type="submit" name="start" value="Start" />
 									</form>
+									
+									<form class="d-flex flex-column justify-content-center"
+										action="/CodeIgniterProject/Task/complete" method="post">
+										<input class="btn btn-success btn-sm my-1" type="submit" name="complete" value="Complete" />
+									</form>
+									
 								</td>
 							</tr>
 							<tr>
