@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Task extends CI_Controller
 {
@@ -6,16 +7,11 @@ class Task extends CI_Controller
     function index()
     {
         echo "Class: Login -> Function: index";
-        
-        // Declare two dates
-        $start_date = strtotime("2018-06-08");
-        $end_date = strtotime("2018-09-19");
-        
-        // Get the difference and divide into
-        // total no. seconds 60/60/24 to get
-        // number of days
-        echo "Difference between two dates: "
-            . ($end_date - $start_date); 
+        echo "<br>";
+        echo "Difference between two dates(Hr): " .(strtotime("2020-01-11 01:43:10") - strtotime("2020-01-10 15:43:08"))/60/60;
+        echo "<br>";
+        echo "Difference between two dates(Hrs): " .gmdate("H:i:s", (strtotime("2020-01-11 01:43:10") - strtotime("2020-01-10 15:43:08")));
+
     }
 
     public function __construct()
@@ -32,98 +28,87 @@ class Task extends CI_Controller
 
         // Load "Login_Model"
         // ==============================================
-        $this->load->model('login_model');
+        $this->load->model('task_model');
     }
 
     function create()
     {
-        
-        $this->load->view('TaskForm');
-        
-        
-//         $this->form_validation->set_rules('type', 'Task Type', 'trim|required');
-//         $this->form_validation->set_rules('department', 'Department', 'trim|required');
-        
-//         if ($this->form_validation->run() === FALSE) {
-//             if (isset($this->session->userdata['logged_in'])) {
-                
-//                 // If User still have a session
-//                 // thus still login
-//                 // redirect to Home Page
-//                 // ==============================================
-//                 $data = array(
-//                     'type' => $this->input->post('type'),
-//                     'department' => $this->input->post('department'),
-//                     'remarks' => $this->input->post('remarks')
-//                 );
-                
-//                 $result = $this->login_model->get_username($username);
-                
-//             } else {
-                
-//                 // If User dont have a session
-//                 // thus not login
-//                 // redirect to Login Page
-//                 // ==============================================
-//                 $this->load->view('LoginForm');
-//             }
-//         } else {
-//             $data = array(
-//                 'username' => $this->input->post('username'),
-//                 'password' => $this->input->post('password')
-//             );
+
+        if (isset($this->session->userdata['logged_in']))
+        {
             
-//             // Compare input value from form against DB
-//             // ==============================================
-//             $result = $this->login_model->authentication($data);
-//             if ($result == true) {
-                
-//                 $username = $this->input->post('username');
-//                 $result = $this->login_model->get_username($username);
-                
-                
-//                 if ($result != false) {
-                    
-//                     // Create Session and load to HOME page
-//                     // ==============================================
-//                     $session_data = array(
-//                         'username' => $result[0]->username,
-//                         'email' => $result[0]->email
-//                     );
-//                     // Add user data in session
-//                     $this->session->set_userdata('logged_in', $session_data);
-                    
-//                     $result['userArrayArrayfromDB'] = $this->login_model->get_all();
-//                     $this->load->view('Home',$result);
-//                 }
-//             } else {
-                
-//                 // Throw an Error message to view
-//                 // ==============================================
-//                 $data = array(
-//                     'error_message' => 'Invalid Username or Password'
-//                 );
-//                 $this->load->view('LoginForm', $data);
-//             }
-//         }
-        
-        
+            $seesdata = $this->session->all_userdata();
+            $data = array(
+                'reg_id' => $seesdata['logged_in']['regid'],
+                'type' => $this->input->post('type'),
+                'department' => $this->input->post('department'),
+                'status' => 'New',
+                'start' => date('Y-m-d H:i:s'),
+                'elapsed' => 0,
+                'remarks' => $this->input->post('remarks')
+            );
+            echo "=========withsessiontop==================";
+            $result['createtaskresult'] = $this->task_model->create_task($data);
+            $result['tasks'] = $this->task_model->get_allbyRegID($data);
+            $this->load->view('TaskForm', $result);
+        } else {
+            
+            echo "=========withoutsession==================";
+            $this->load->view('LoginForm');
+        }
     }
     
-    function action()
+    function update()
     {
         
+        $this->form_validation->set_rules('type', 'Task Type', 'trim|required');
+        $this->form_validation->set_rules('department', 'Department', 'trim|required');
         
-        
-        if ($this->input->post('Start')) {
-            echo "Value: ".$this->input->post('Start');
+        if ($this->form_validation->run() === FALSE) {
+            if (isset($this->session->userdata['logged_in'])) {
+                
+                $seesdata = $this->session->all_userdata();
+                $data = array(
+                    'reg_id' => $seesdata['logged_in']['regid'],
+                    'type' => $this->input->post('type'),
+                    'department' => $this->input->post('department'),
+                    'status' => 'new',
+                    'start' => date('Y-m-d H:i:s'),
+                    'elapsed' => 0,
+                    'remarks' => $this->input->post('remarks')
+                );
+                
+                $result['resultBool'] = $this->task_model->create_task($data);
+                $this->load->view('TaskForm', $result);
+            } else {
+                
+                $this->load->view('TaskForm');
+            }
+        } else {
+            $seesdata = $this->session->all_userdata();
+            $data = array(
+                'reg_id' => $seesdata['logged_in']['regid'],
+                'type' => $this->input->post('type'),
+                'department' => $this->input->post('department'),
+                'status' => 'new',
+                'start' => date('Y-m-d H:i:s'),
+                'elapsed' => 0,
+                'remarks' => $this->input->post('remarks')
+            );
+            
+            $result['resultMessage'] = $this->task_model->create_task($data);
+            $this->load->view('TaskForm', $result);
         }
-        else if ($this->input->post('Complete')) {
-            echo "Value: ".$this->input->post('Complete');
-        }
-        
     }
-    
+
+    function action()
+    {
+        if ($this->input->post('start')) {
+            echo "Value: " . $this->input->post('start');
+        } else if ($this->input->post('Complete')) {
+            echo "Value: " . $this->input->post('Complete');
+        }
+    }
 }
 
 ?>

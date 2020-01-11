@@ -1,12 +1,8 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
-
-    function index()
-    {
-        echo "Class: Login -> Function: index";
-    }
 
     public function __construct()
     {
@@ -23,42 +19,30 @@ class Login extends CI_Controller
         // Load "Login_Model"
         // ==============================================
         $this->load->model('login_model');
+        $this->load->model('task_model');
+    }
+
+    function index()
+    {
+        $this->authentication();
     }
 
     function authentication()
     {
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        // Check if SESSION is SET
+        // ================================================
+        if (isset($this->session->userdata['logged_in'])) {
 
-        // Run FormValidation Rules
-        // Returns FALSE (boolean false) by default.
-        // Returns TRUE if it has successfully applied
-        // your rules without any of them failing.
-        // ==============================================
+            $seesdata = $this->session->all_userdata();
+
+            $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
+            $this->load->view('TaskForm', $result);
+        } 
         
-        // var_dump($_POST);
-        // exit;
-        
-        if ($this->form_validation->run() === FALSE) {
-            if (isset($this->session->userdata['logged_in'])) {
-                
-                // If User still have a session 
-                // thus still login
-                // redirect to Home Page
-                // ==============================================
-                $result['userArrayArrayfromDB'] = $this->login_model->get_all();
-                $this->load->view('Home',$result);                
-                $this->load->view('Home');
-                
-            } else {
-                
-                // If User dont have a session
-                // thus not login
-                // redirect to Login Page
-                // ==============================================
-                $this->load->view('LoginForm');
-            }
-        } else {
+        // Check if SESSION is SET
+        // Username & Password are SET
+        // ================================================
+        elseif (! isset($this->session->userdata['logged_in']) && $this->input->post('username') && $this->input->post('password')) {
             $data = array(
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password')
@@ -66,36 +50,38 @@ class Login extends CI_Controller
 
             // Compare input value from form against DB
             // ==============================================
-            $result = $this->login_model->authentication($data);
-            if ($result == true) {
-                
+            $authentication = $this->login_model->authentication($data);
+
+            if ($authentication == true) {
+
                 $username = $this->input->post('username');
                 $result = $this->login_model->get_username($username);
-               
 
-                if ($result != false) {
-                    
+                if ($result == true) {
+
+
                     // Create Session and load to HOME page
                     // ==============================================
                     $session_data = array(
+                        'regid' => $result[0]->id,
                         'username' => $result[0]->username,
-                        'email' => $result[0]->email
+                        'email' => $result[0]->email,
+                        'password' => $result[0]->password_one
                     );
                     // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    
-                    $result['userArrayArrayfromDB'] = $this->login_model->get_all();
-                    $this->load->view('Home',$result);
+                    $result['tasks'] = $this->task_model->get_allbyRegID($result[0]->id);
+                    $this->load->view('TaskForm', $result);
                 }
-                } else {
-                    
-                    // Throw an Error message to view
-                    // ==============================================
-                    $data = array(
-                        'error_message' => 'Invalid Username or Password'
-                    );
-                    $this->load->view('LoginForm', $data);
-                }
+            } else {
+
+                $data = array(
+                    'error_message' => 'Invalid Username or Password'
+                );
+                $this->load->view('LoginForm', $data);
+            }
+        } else {
+            $this->load->view('LoginForm');
         }
     }
 }

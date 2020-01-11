@@ -13,9 +13,7 @@ class Login_Model extends CI_Model
     }
     
     function authentication($data)
-    {
-        
-        
+    {   
         $condition = "username =" . "'" . $data['username'] . "' AND " . "password_one =" . "'" . $data['password'] . "'";
         $this->db->select('*');
         $this->db->from('registration');

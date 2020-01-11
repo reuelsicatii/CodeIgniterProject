@@ -23,14 +23,28 @@
 <body>
 	<!-- main -->
 	<div class="container">
+
 		<div class="row py-5"></div>
+		
+		<div class="row d-flex">
+			<?php
+			if (isset($createtaskresult)) {
+			    if ($createtaskresult == TRUE) {
+                        echo "<div class=\"alert alert-success flex-fill\"><strong>Success!</strong> Task successfully created.</div>";
+                    } else {
+                        echo "<div class=\"alert alert-danger flex-fill\"><strong>Danger!</strong> Task unsuccessfully created.</div>";
+                    }
+                }
+            ?>
+		</div>
 
 		<div class="row">
 			<div class="col-sm-1"></div>
-			<div class="col-sm-10">
+			<div class="col-sm-10">	
 				<div class="row py-1">
 					<!-- Button to Open the Modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createTask">Create Task</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#createTask">Create Task</button>
 
 					<!-- The Modal:createTask -->
 					<div class="modal" id="createTask">
@@ -45,44 +59,50 @@
 
 								<!-- Modal body -->
 								<div class="modal-body">
-									<form>
-										<div class="form-group d-inline-flex my-1">
+									<form action="/CodeIgniterProject/Task/create" method="post">
+										<div class="form-group d-flex">
 
-											<select class="custom-select mx-1" name="type">
+											<select class="custom-select mx-1 flex-fill" name="type">
 												<option selected>Task Type</option>
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
-											</select> 
-											
-											<select class="custom-select mx-1" name="department">											
+											</select> <select class="custom-select mx-1 flex-fill"
+												name="department">
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
 												<option value="Payroll">Payroll</option>
 											</select>
 
-											<button class="btn btn-secondary mx-1" disabled>NEW</button>
 										</div>
 										<div class="form-group my-1">
-											<label for="exampleInputPassword1">Start</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="exampleInputPassword1">End</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="exampleInputPassword1">Elapsed</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="comment">Remarks:</label>
-  											<textarea class="form-control" rows="5" id="comment" name="remarks"></textarea>											
+											<label for="status">Status</label> <input type="text"
+												class="form-control mb-1" value="New" disabled> <label
+												for="start">Start</label> <input type="text"
+												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
+												disabled> <label for="end">End</label> <input type="text"
+												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
+												disabled> <label for="elapsed">Elapsed(Hrs)</label> <input
+												type="text" class="form-control mb-1" value="HH:MM:SS"
+												disabled> <label for="comment">Remarks:</label>
+											<textarea class="form-control mb-3" rows="5" id="comment"
+												name="remarks"></textarea>
+
 										</div>
-					
-										<button type="submit" class="btn btn-primary">Create</button>
+
+										<div class="d-flex flex-row-reverse">
+											<button type="submit" class="btn btn-primary">Create</button>
+										</div>
+
+
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
-					
-	               <!-- The Modal:updateTask -->
+
+					<!-- The Modal:updateTask -->
 					<div class="modal" id="updateTask">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -103,28 +123,27 @@
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
-											</select> 
-											
-											<select class="custom-select mx-1" name="department">											
+											</select> <select class="custom-select mx-1"
+												name="department">
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
 												<option value="Payroll">Payroll</option>
-											</select>
-
-											<button class="btn btn-secondary mx-1" disabled>NEW</button>
+											</select> <input class="btn btn-primary btn-sm my-1"
+												name="start" value="start" disabled />
 										</div>
 										<div class="form-group my-1">
-											<label for="exampleInputPassword1">Start</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="exampleInputPassword1">End</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="exampleInputPassword1">Elapsed</label> 
-											<input type="text" class="form-control" value="9999-12-31 23:59:59" disabled>
-											<label for="comment">Remarks:</label>
-  											<textarea class="form-control" rows="5" id="comment" name="remarks"></textarea>											
+											<label for="exampleInputPassword1">Start</label> <input
+												type="text" class="form-control" value="9999-12-31 23:59:59"
+												disabled> <label for="exampleInputPassword1">End</label> <input
+												type="text" class="form-control" value="9999-12-31 23:59:59"
+												disabled> <label for="exampleInputPassword1">Elapsed</label>
+											<input type="text" class="form-control"
+												value="9999-12-31 23:59:59" disabled> <label for="comment">Remarks:</label>
+											<textarea class="form-control" rows="5" id="comment"
+												name="remarks"></textarea>
 										</div>
-					
+
 										<button type="submit" class="btn btn-primary">Update</button>
 									</form>
 								</div>
@@ -134,9 +153,9 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
+
+
+
 				</div>
 				<div class="row py-1">
 					<table class="table">
@@ -156,23 +175,65 @@
 								<td>Otto</td>
 								<td>@mdo</td>
 								<td>
-								
+
 									<div class="d-flex flex-column justify-content-center">
-									<button type="button" class="btn btn-info btn-sm my-1" data-toggle="modal" data-target="#updateTask">Update Task</button>
+										<button type="button" class="btn btn-info btn-sm my-1"
+											data-toggle="modal" data-target="#updateTask">Update Task</button>
 									</div>									
 
+
 									<form class="d-flex flex-column justify-content-center"
-										action="/CodeIgniterProject/Task/start_pause" method="post">
-										<input class="btn btn-primary btn-sm my-1" type="submit" name="start" value="Start" />
+										action="/CodeIgniterProject/Task/action" method="post">
+										<input class="btn btn-primary btn-sm mb-1" type="submit"
+											name="start" value="Start" />
+										<input class="btn btn-success btn-sm" type="submit"
+											name="complete" value="Complete" />
 									</form>
-									
-									<form class="d-flex flex-column justify-content-center"
-										action="/CodeIgniterProject/Task/complete" method="post">
-										<input class="btn btn-success btn-sm my-1" type="submit" name="complete" value="Complete" />
-									</form>
-									
+
 								</td>
 							</tr>
+							<?php foreach ($tasks as $task): ?> 
+        					<tr>
+        						<td><?= $task['reg_id'] ?></td>
+        						<td><?= $task['type'] ?></td>
+        						<td><?= $task['department'] ?></td>
+        						<td><?= $task['status'] ?></td>
+								<td>
+
+												<div class="d-flex flex-column justify-content-center">
+										<button type="button" class="btn btn-info btn-sm my-1"
+											data-toggle="modal" data-target="#updateTask">Update Task</button>
+									</div>
+
+									<form class="d-flex flex-column justify-content-center"
+										action="/CodeIgniterProject/Task/action" method="post">
+										<?php 
+										
+										      if ($task['status'] == 'New') {
+										          $inputName="start";
+										          $inputName="Start";
+										      }
+										      else if ($task['status'] == 'Pause') {
+										          $inputName="start";
+										          $inputName="Start";
+										      }
+										      else {
+										          
+										      }
+										
+										?>
+										
+										<input class="btn btn-primary btn-sm mb-1" type="submit" name="start" value="Start" />
+										<input class="btn btn-success btn-sm" type="submit" name="complete" value="Complete" />
+									</form>
+
+								</td>
+        					</tr>
+        					<?php endforeach; ?>
+							
+							
+							
+							
 							<tr>
 								<th scope="row">2</th>
 								<td>Jacob</td>
