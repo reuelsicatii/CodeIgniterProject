@@ -36,7 +36,7 @@ class Task extends CI_Controller
         if (isset($this->session->userdata['logged_in']) && $this->input->post('type') && $this->input->post('department')) {
 
             echo "=========aaaaaaaaaaaaa==================";
-            
+
             $data = array(
                 'reg_id' => $seesdata['logged_in']['regid'],
                 'type' => $this->input->post('type'),
@@ -50,14 +50,12 @@ class Task extends CI_Controller
             $result['createtaskresult'] = $this->task_model->create_task($data);
             $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
             $this->load->view('TaskForm', $result);
-            
         } elseif (isset($this->session->userdata['logged_in']) && ! $this->input->post('username') && ! $this->input->post('password')) {
-            
+
             echo "=========sdfsfadasd==================";
             $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
             $this->load->view('TaskForm', $result);
-        } 
-        else {
+        } else {
 
             // echo "=========withoutsession==================";
             $data = array(

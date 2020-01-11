@@ -37,9 +37,7 @@ class Login extends CI_Controller
 
             $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
             $this->load->view('TaskForm', $result);
-        } 
-        
-        // Check if SESSION is SET
+        } // Check if SESSION is SET
         // Username & Password are SET
         // ================================================
         elseif (! isset($this->session->userdata['logged_in']) && $this->input->post('username') && $this->input->post('password')) {
@@ -58,7 +56,6 @@ class Login extends CI_Controller
                 $result = $this->login_model->get_username($username);
 
                 if ($result == true) {
-
 
                     // Create Session and load to HOME page
                     // ==============================================
