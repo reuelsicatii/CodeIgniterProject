@@ -12,7 +12,7 @@
 
 </script>
 <link
-	href="/CodeIgniterProject/application/views/css/RegistrationForm.css"
+	href="/CodeIgniterProject/application/views/css/LoginForm.css"
 	rel="stylesheet" type="text/css" media="all" />
 
 <link
@@ -37,7 +37,10 @@
                     if (isset($error_message)) {                        
                         echo "<CENTER><h3 style=\"color: red;\">".$error_message."</h3></CENTER><br>";
                         }
-                ?>	
+                ?>	              
+                <p>
+					Don't have an account? <a href="/CodeIgniterProject/Registration/add_user">Sign up (it's free).</a>
+				</p>
 			</div>
 		</div>
 	</div>

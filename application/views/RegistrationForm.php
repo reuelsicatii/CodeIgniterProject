@@ -26,7 +26,8 @@
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 			<?php if (isset($message)) {
-			    echo "<CENTER><h3 style=\"color: green;\">Data inserted successfully</h3></CENTER><br>";
+			    echo "<CENTER><h3 style=\"color: white;\">Data inserted successfully. 
+                    Click <a href=\"/CodeIgniterProject/\">here</a> to Login</h3></CENTER><br>";
 			}			
 			?>			
 				<form action="/CodeIgniterProject/Registration/add_user"
@@ -41,7 +42,7 @@
 						value="SIGNUP">
 				</form>
 				<p>
-					Don't have an Account? <a href="#"> Login Now!</a>
+					Already have an Account? <a href="/CodeIgniterProject/"> Login Now!</a>
 				</p>
 			</div>
 		</div>
