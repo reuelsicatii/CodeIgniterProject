@@ -25,17 +25,22 @@ class Task extends CI_Controller
         // ==============================================
         $this->load->library('session');
 
-        // Load "Login_Model"
+        // Load "Task_Model" model
         // ==============================================
         $this->load->model('task_model');
+        
+        // Load "URL" helper
+        // ==============================================
+        $this->load->helper('url');
     }
 
     function create()
     {
         $seesdata = $this->session->all_userdata();
+        
         if (isset($this->session->userdata['logged_in']) && $this->input->post('type') && $this->input->post('department')) {
 
-            echo "=========aaaaaaaaaaaaa==================";
+            //echo "=========aaaaaaaaaaaaa==================";
 
             $data = array(
                 'reg_id' => $seesdata['logged_in']['regid'],
@@ -47,12 +52,14 @@ class Task extends CI_Controller
                 'remarks' => $this->input->post('remarks')
             );
             // echo "=========withsessiontop==================";
-            $result['createtaskresult'] = $this->task_model->create_task($data);
-            $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
-            $this->load->view('TaskForm', $result);
+            $this->task_model->create_task($data);
+            redirect('Task/create');
+
+            
         } elseif (isset($this->session->userdata['logged_in']) && ! $this->input->post('username') && ! $this->input->post('password')) {
 
-            echo "=========sdfsfadasd==================";
+            //echo "=========sdfsfadasd==================";
+            $result['createtaskresult'] = TRUE;
             $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
             $this->load->view('TaskForm', $result);
         } else {
