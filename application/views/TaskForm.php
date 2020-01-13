@@ -198,12 +198,12 @@
 							</tr>
 							<?php foreach ($tasks as $task): ?> 
         					<tr>
-								<td><?= $task['id'] ?></td>
-								<td><?= $task['type'] ?></td>
-								<td><?= $task['department'] ?></td>
-								<td><?= $task['start'] ?></td>
-								<td><?= $task['elapsed'] ?></td>
-								<td><?= $task['status'] ?></td>
+								<td id="<?= $task['id'] ?>"><?= $task['id'] ?></td>
+								<td id="<?= 'type' ?>"><?= $task['type'] ?></td>
+								<td id="<?= 'department' ?>"><?= $task['department'] ?></td>
+								<td id="<?= 'start' ?>"><?= $task['start'] ?></td>
+								<td id="<?= 'elapsed' ?>"><?= $task['elapsed'] ?></td>
+								<td id="<?= 'status' ?>"><?= $task['status'] ?></td>
 								<td>
 
 									<div class="d-flex flex-column justify-content-center">
