@@ -1,10 +1,8 @@
 
-$('.button').click(function() {
-  $.ajax({
-    type: "POST",
-    url: "some.php",
-    data: { name: "John" }
-  }).done(function( msg ) {
-    alert( "Data Saved: " + msg );
-  });
+
+
+
+$(document).on("click", ".updatetask", function () {
+ var ids = $(this).attr('data-id');
+ $("#idkl").val(ids);
 });
