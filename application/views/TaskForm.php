@@ -84,7 +84,7 @@
 												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
 												disabled> <label for="elapsed">Elapsed(Hrs)</label> <input
 												type="text" class="form-control mb-1" value="HH:MM:SS"
-												disabled> <label for="comment">Remarks:</label>
+												disabled> <label for="commentforcreate">Remarks:</label>
 											<textarea class="form-control mb-3" rows="5" id="comment"
 												name="remarks"></textarea>
 
@@ -114,10 +114,8 @@
 
 								<!-- Modal body -->
 								<div class="modal-body">
-									<form>
+									<form action="/CodeIgniterProject/Task/update" method="post">
 										<div class="form-group d-inline-flex my-1">
-										
-											
 
 											<select class="custom-select mx-1" name="type">
 												<option selected>Task Type</option>
@@ -134,14 +132,14 @@
 												name="start" value="start" disabled />
 										</div>
 										<div class="form-group my-1">
-										<input type="hidden" class="form-control" name="idkl" id="idkl" value="">
+										<input type="hidden" class="form-control" name="idtask" id="idtask" value="">
 											<label for="exampleInputPassword1">Start</label> <input
 												type="text" class="form-control" value="9999-12-31 23:59:59"
 												disabled> <label for="exampleInputPassword1">End</label> <input
 												type="text" class="form-control" value="9999-12-31 23:59:59"
 												disabled> <label for="exampleInputPassword1">Elapsed</label>
 											<input type="text" class="form-control"
-												value="9999-12-31 23:59:59" disabled> <label for="comment">Remarks:</label>
+												value="9999-12-31 23:59:59" disabled> <label for="commentforupdate">Remarks:</label>
 											<textarea class="form-control" rows="5" id="comment"
 												name="remarks"></textarea>
 										</div>
@@ -183,7 +181,7 @@
 								<td>
 
 									<div class="d-flex flex-column justify-content-center">
-										<button type="button" class="btn btn-info btn-sm my-1 updatetask"
+										<button type="button" class="btn btn-info btn-sm my-1" id="updatetask"
 											data-id="4" data-toggle="modal" data-target="#updateTask">Update Task</button>
 									</div>
 
@@ -200,7 +198,7 @@
 							</tr>
 							<?php foreach ($tasks as $task): ?> 
         					<tr>
-								<td><?= $task['reg_id'] ?></td>
+								<td><?= $task['id'] ?></td>
 								<td><?= $task['type'] ?></td>
 								<td><?= $task['department'] ?></td>
 								<td><?= $task['start'] ?></td>
@@ -209,8 +207,8 @@
 								<td>
 
 									<div class="d-flex flex-column justify-content-center">
-										<button type="button" class="btn btn-info btn-sm my-1"
-											data-toggle="modal" data-target="#updateTask">Update Task</button>
+										<button type="button" class="btn btn-info btn-sm my-1" id="updatetask"
+											data-id=<?= $task['id'] ?> data-toggle="modal" data-target="#updateTask">Update Task</button>
 									</div>
 
 									<form class="d-flex flex-column justify-content-center"
@@ -270,9 +268,7 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 		<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-		crossorigin="anonymous"></script>
+		src="/CodeIgniterProject/application/views/js/Task.js"></script>
 </body>
 </html>
 

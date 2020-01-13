@@ -2,7 +2,8 @@
 
 
 
-$(document).on("click", ".updatetask", function () {
+$(document).on("click", "#updatetask", function () {
+ console.log("jQuery Trigger");
  var ids = $(this).attr('data-id');
- $("#idkl").val(ids);
+ $("#idtask").val(ids);
 });

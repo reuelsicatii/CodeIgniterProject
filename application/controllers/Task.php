@@ -74,44 +74,7 @@ class Task extends CI_Controller
 
     function update()
     {
-        $this->form_validation->set_rules('type', 'Task Type', 'trim|required');
-        $this->form_validation->set_rules('department', 'Department', 'trim|required');
-
-        if ($this->form_validation->run() === FALSE) {
-            if (isset($this->session->userdata['logged_in'])) {
-
-                $seesdata = $this->session->all_userdata();
-                $data = array(
-                    'reg_id' => $seesdata['logged_in']['regid'],
-                    'type' => $this->input->post('type'),
-                    'department' => $this->input->post('department'),
-                    'status' => 'new',
-                    'start' => date('Y-m-d H:i:s'),
-                    'elapsed' => 0,
-                    'remarks' => $this->input->post('remarks')
-                );
-
-                $result['resultBool'] = $this->task_model->create_task($data);
-                $this->load->view('TaskForm', $result);
-            } else {
-
-                $this->load->view('TaskForm');
-            }
-        } else {
-            $seesdata = $this->session->all_userdata();
-            $data = array(
-                'reg_id' => $seesdata['logged_in']['regid'],
-                'type' => $this->input->post('type'),
-                'department' => $this->input->post('department'),
-                'status' => 'new',
-                'start' => date('Y-m-d H:i:s'),
-                'elapsed' => 0,
-                'remarks' => $this->input->post('remarks')
-            );
-
-            $result['resultMessage'] = $this->task_model->create_task($data);
-            $this->load->view('TaskForm', $result);
-        }
+        echo $this->input->post('idtask');
     }
 
     function action()
