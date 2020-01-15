@@ -74,7 +74,15 @@ class Task extends CI_Controller
 
     function update()
     {
-        echo $this->input->post('idtask');
+        echo $this->input->post('idtask')."<br>";
+        echo $this->input->post('type')."<br>";
+        echo $this->input->post('department')."<br>";
+        echo $this->input->post('status')."<br>";
+        
+        echo "============================";
+        echo $this->input->post('start')."<br>";
+        echo $this->input->post('elapsed')."<br>";
+        echo $this->input->post('remarks')."<br>";
     }
 
     function action()

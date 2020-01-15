@@ -85,7 +85,7 @@
 												disabled> <label for="elapsed">Elapsed(Hrs)</label> <input
 												type="text" class="form-control mb-1" value="HH:MM:SS"
 												disabled> <label for="commentforcreate">Remarks:</label>
-											<textarea class="form-control mb-3" rows="5" id="comment"
+											<textarea class="form-control mb-3" rows="5" id="createmodalformtextareacomment"
 												name="remarks"></textarea>
 
 										</div>
@@ -115,36 +115,38 @@
 								<!-- Modal body -->
 								<div class="modal-body">
 									<form action="/CodeIgniterProject/Task/update" method="post">
-										<div class="form-group d-inline-flex my-1">
+										<div id="updatemodalformrow1" class="form-group d-inline-flex my-1">
 
-											<select class="custom-select mx-1" name="type">
+											<select id="updatemodalformselecttype" class="custom-select mx-1" name="type">
 												<option selected>Task Type</option>
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
-											</select> <select class="custom-select mx-1"
+											</select> <select id="updatemodalformselectdepartment" class="custom-select mx-1"
 												name="department">
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
 												<option value="Payroll">Payroll</option>
-											</select> <input class="btn btn-primary btn-sm my-1"
-												name="start" value="start" disabled />
+											</select> <input id="updatemodalforminputstatus" class="btn btn-primary btn-sm my-1"
+												name="status" value="start" disabled />
 										</div>
-										<div class="form-group my-1">
+										<div id="updatemodalformrow2" class="form-group my-1">
 										<input type="hidden" class="form-control" name="idtask" id="idtask" value="">
-											<label for="exampleInputPassword1">Start</label> <input
+											<label for="exampleInputPassword1">Start</label> <input id="updatemodalforminputstart" name="start"
 												type="text" class="form-control" value="9999-12-31 23:59:59"
 												disabled> <label for="exampleInputPassword1">End</label> <input
-												type="text" class="form-control" value="9999-12-31 23:59:59"
+												type="text" class="form-control" value="YYYY-MM-DD HH:MM:SS"
 												disabled> <label for="exampleInputPassword1">Elapsed</label>
-											<input type="text" class="form-control"
+											<input id="updatemodalforminputelapsed" type="text" class="form-control" name="elapsed"
 												value="9999-12-31 23:59:59" disabled> <label for="commentforupdate">Remarks:</label>
-											<textarea class="form-control" rows="5" id="comment"
+											<textarea class="form-control mb-5" rows="5" id="updatemodalformtextareacomment"
 												name="remarks"></textarea>
 										</div>
 
-										<button type="submit" class="btn btn-primary">Update</button>
+										<div class="d-flex flex-row-reverse">
+											<button type="submit" class="btn btn-primary">Update</button>
+										</div>
 									</form>
 								</div>
 
@@ -197,8 +199,8 @@
 								</td>
 							</tr>
 							<?php foreach ($tasks as $task): ?> 
-        					<tr>
-								<td id="<?= $task['id'] ?>"><?= $task['id'] ?></td>
+        					<tr id="<?= 'taskprofile_'.$task['id']?>">
+								<td id="<?= 'taskid'?>"><?= $task['id'] ?></td>
 								<td id="<?= 'type' ?>"><?= $task['type'] ?></td>
 								<td id="<?= 'department' ?>"><?= $task['department'] ?></td>
 								<td id="<?= 'start' ?>"><?= $task['start'] ?></td>
