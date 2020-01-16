@@ -28,7 +28,7 @@ class Task extends CI_Controller
         // Load "Task_Model" model
         // ==============================================
         $this->load->model('task_model');
-        
+
         // Load "URL" helper
         // ==============================================
         $this->load->helper('url');
@@ -37,10 +37,10 @@ class Task extends CI_Controller
     function create()
     {
         $seesdata = $this->session->all_userdata();
-        
+
         if (isset($this->session->userdata['logged_in']) && $this->input->post('type') && $this->input->post('department')) {
 
-            //echo "=========aaaaaaaaaaaaa==================";
+            // echo "=========aaaaaaaaaaaaa==================";
 
             $data = array(
                 'reg_id' => $seesdata['logged_in']['regid'],
@@ -51,15 +51,19 @@ class Task extends CI_Controller
                 'elapsed' => 0,
                 'remarks' => $this->input->post('remarks')
             );
-            // echo "=========withsessiontop==================";
-            $this->task_model->create_task($data);
-            redirect('Task/create');
-
+            // echo "=========withsessiontop==================";            
+            if ($this->task_model->create_task($data)) {
+                redirect('Task/update');
+            } else {
+                $result['transactionresult'] = FALSE;
+                $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
+                $this->load->view('TaskForm', $result);
+            }
             
         } elseif (isset($this->session->userdata['logged_in']) && ! $this->input->post('username') && ! $this->input->post('password')) {
 
-            //echo "=========sdfsfadasd==================";
-            $result['createtaskresult'] = TRUE;
+            // echo "=========sdfsfadasd==================";
+            $result['transactionresult'] = TRUE;
             $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
             $this->load->view('TaskForm', $result);
         } else {
@@ -74,15 +78,41 @@ class Task extends CI_Controller
 
     function update()
     {
-        echo $this->input->post('idtask')."<br>";
-        echo $this->input->post('type')."<br>";
-        echo $this->input->post('department')."<br>";
-        echo $this->input->post('status')."<br>";
-        
-        echo "============================";
-        echo $this->input->post('start')."<br>";
-        echo $this->input->post('elapsed')."<br>";
-        echo $this->input->post('remarks')."<br>";
+        $seesdata = $this->session->all_userdata();
+
+        if (isset($this->session->userdata['logged_in']) && $this->input->post('type') && $this->input->post('department')) {
+
+            // echo "=========aaaaaaaaaaaaa==================";
+
+            $data = array(
+                'id' => $this->input->post('idtask'),
+                'reg_id' => $seesdata['logged_in']['regid'],
+                'type' => $this->input->post('type'),
+                'department' => $this->input->post('department'),
+                'remarks' => $this->input->post('remarks')
+            );
+            // echo "=========withsessiontop==================";
+            if ($this->task_model->update_task($data)) {
+                redirect('Task/update');
+            } else {
+                $result['transactionresult'] = FALSE;
+                $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
+                $this->load->view('TaskForm', $result);
+            }
+        } elseif (isset($this->session->userdata['logged_in']) && ! $this->input->post('username') && ! $this->input->post('password')) {
+
+            // echo "=========sdfsfadasd==================";
+            $result['transactionresult'] = TRUE;
+            $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);
+            $this->load->view('TaskForm', $result);
+        } else {
+
+            // echo "=========withoutsession==================";
+            $data = array(
+                'error_message' => 'Your Session has expired. Please login.'
+            );
+            $this->load->view('LoginForm');
+        }
     }
 
     function action()

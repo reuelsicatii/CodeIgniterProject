@@ -19,11 +19,9 @@ class Task_Model extends CI_Model
         $this->db->trans_complete();
 
         if ($this->db->trans_status() === TRUE) {
-            // echo "Model->create_task: Task successfully created";
-            return TRUE;
+            return "Task successfully created";
         } else {
-            // echo "Model->create_task: Task successfully created";
-            return FALSE;
+            return "Task unsuccessfully created";
         }
     }
 
@@ -37,5 +35,22 @@ class Task_Model extends CI_Model
 
         return $query->result_array();
     }
+    
+    function update_task($data)
+    {
+        $condition = "id =" . "'" . $data['id'] . "' AND " . "reg_id =" . "'" . $data['reg_id'] . "'";
+        $this->db->set('type', $data['type']);
+        $this->db->set('department', $data['department']);
+        $this->db->set('remarks', $data['remarks']);
+        $this->db->where($condition);
+        $query = $this->db->update('task');
+        
+        if ($this->db->trans_status() === TRUE) {
+            return "Task successfully updated";
+        } else {
+            return "Task unsuccessfully updated";
+        }
+    }
+    
 }
 ?>
