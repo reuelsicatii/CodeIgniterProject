@@ -227,21 +227,23 @@
 									<form class="d-flex flex-column justify-content-center"
 										action="/CodeIgniterProject/Task/action" method="post">
 										<?php
-
-        if ($task['status'] == 'New') {
-            $inputName = "start";
-            $inputName = "Start";
-        } else if ($task['status'] == 'Pause') {
-            $inputName = "start";
-            $inputName = "Start";
-        } else {}
-
-        ?>
-										
-										<input class="btn btn-primary btn-sm mb-1" type="submit"
-											name="start" value="Start" /> <input
-											class="btn btn-success btn-sm" type="submit" name="complete"
-											value="Complete" />
+    										if ($task['status'] == 'NEW') {
+                                                    $actionValue = "Start";
+                                                }
+                                            else if ($task['status'] == 'IN PROGRESS') {
+                                                    $actionValue = "Pause";                                                
+                                                } 
+                                            else if ($task['status'] == 'Pause') {
+                                                    $actionValue = "Start";
+                                                } 
+                                            else {
+                                                
+                                            }
+                                    
+                                        ?>
+										<input type="hidden" class="form-control" name="idtask" id="idtask" value="<?=$task['id']?>">
+										<input class="btn btn-primary btn-sm mb-1" type="submit" name="action" value="<?=$actionValue?>"/> 
+										<input class="btn btn-success btn-sm" type="submit" name="complete" value="Complete"/>
 									</form>
 
 								</td>

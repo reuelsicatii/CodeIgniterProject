@@ -52,5 +52,20 @@ class Task_Model extends CI_Model
         }
     }
     
+    function start_task($data)
+    {
+        $condition = "id =" . "'" . $data['id'] . "' AND " . "reg_id =" . "'" . $data['reg_id'] . "'";
+        $this->db->set('start', $data['start']);
+        $this->db->set('status', $data['status']);
+        $this->db->where($condition);
+        $query = $this->db->update('task');
+        
+        if ($this->db->trans_status() === TRUE) {
+            return "Task successfully updated";
+        } else {
+            return "Task unsuccessfully updated";
+        }
+    }
+    
 }
 ?>
