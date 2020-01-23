@@ -29,3 +29,4 @@ $(document).on("click", "#updatetask", function() {
 $("#transactionnotif").show().delay(5000).queue(function(n) {
 	  $(this).hide(); n();
 	});
+

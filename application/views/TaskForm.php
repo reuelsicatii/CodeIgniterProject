@@ -213,7 +213,7 @@
 								<td id="<?= 'department' ?>"><?= $task['department'] ?></td>
 								<td id="<?= 'start' ?>"><?= $task['start'] ?></td>
 								<td id="<?= 'end' ?>" style="display: none;"><?= $task['end'] ?></td>
-								<td id="<?= 'elapsed' ?>"><?= $task['elapsed'] ?></td>
+								<td id="<?= 'elapsed' ?>"><?= $task['elapsed']/(60*60) ?></td>
 								<td id="<?= 'status' ?>"><?= $task['status'] ?></td>
 								<td id="<?= 'remarks' ?>" style="display: none;"><?= $task['remarks'] ?></td>
 								<td>
@@ -233,7 +233,7 @@
                                             else if ($task['status'] == 'IN PROGRESS') {
                                                     $actionValue = "Pause";                                                
                                                 } 
-                                            else if ($task['status'] == 'Pause') {
+                                            else if ($task['status'] == 'PAUSE') {
                                                     $actionValue = "Start";
                                                 } 
                                             else {
