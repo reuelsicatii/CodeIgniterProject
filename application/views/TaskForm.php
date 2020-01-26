@@ -28,15 +28,15 @@
 
 		<div class="row d-flex">
 			<?php
-                if (isset($transactionresult)) {
-                    if ($transactionresult == TRUE) {
-                        echo "<div id=\"transactionnotif\" class=\"alert alert-success flex-fill\"><strong>Successful!</strong> Well DONE, you did it.</div>";
-                    } else {
-                        echo "<div id=\"transactionnotif\" class=\"alert alert-danger flex-fill\"><strong>Unsuccessful!</strong> Unfortunate we are unable to made changes. Please contact ADMIN.</div>";
-                    }
-                }
-            
-            ?>
+if (isset($transactionresult)) {
+    if ($transactionresult == TRUE) {
+        echo "<div id=\"transactionnotif\" class=\"alert alert-success flex-fill\"><strong>Successful!</strong> Well DONE, you did it.</div>";
+    } else {
+        echo "<div id=\"transactionnotif\" class=\"alert alert-danger flex-fill\"><strong>Unsuccessful!</strong> Unfortunate we are unable to made changes. Please contact ADMIN.</div>";
+    }
+}
+
+?>
 		</div>
 
 		<div class="row d-flex">
@@ -77,17 +77,23 @@
 
 										</div>
 										<div class="form-group my-1">
-											<label for="status">Status</label> <input type="text"
-												class="form-control mb-1" value="New" disabled> <label
-												for="start">Start</label> <input type="text"
-												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
-												disabled> <label for="end">End</label> <input type="text"
-												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
-												disabled> <label for="elapsed">Elapsed(Hrs)</label> <input
-												type="text" class="form-control mb-1" value="HH:MM:SS"
-												disabled> <label for="commentforcreate">Remarks:</label>
-											<textarea class="form-control mb-3" rows="5"
-												id="createmodalformtextareacomment" name="remarks"></textarea>
+											<label for="status">Summary</label> 
+											<input type="text" class="form-control mb-1" placeholder="Summary xx of XX" name="summary"> 
+												
+											<label for="status">Status</label> 
+											<input type="text" class="form-control mb-1" value="New" disabled> 
+												
+											<label for="start">Start</label> 
+											<input type="text" class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS" disabled> 
+												
+											<label for="end">End</label> 
+											<input type="text" class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS" disabled> 
+												
+											<label for="elapsed">Elapsed(Hrs)</label> 
+											<input type="text" class="form-control mb-1" value="HH:MM:SS" disabled> 
+												
+											<label for="commentforcreate">Remarks:</label>
+											<textarea class="form-control mb-3" rows="5" id="createmodalformtextareacomment" name="remarks"></textarea>
 
 										</div>
 
@@ -136,19 +142,23 @@
 												value="start" disabled />
 										</div>
 										<div id="updatemodalformrow2" class="form-group my-1">
-											<input type="hidden" class="form-control" name="idtask"
-												id="idtask" value=""> <label for="exampleInputPassword1">Start</label>
-											<input id="updatemodalforminputstart" name="start"
-												type="text" class="form-control" value="9999-12-31 23:59:59"
-												disabled> <label for="exampleInputPassword1">End</label> <input
-												id="updatemodalforminputend" name="end" type="text"
-												class="form-control" value="YYYY-MM-DD HH:MM:SS" disabled> <label
-												for="exampleInputPassword1">Elapsed</label> <input
-												id="updatemodalforminputelapsed" name="elapsed" type="text"
-												class="form-control" value="9999-12-31 23:59:59" disabled> <label
-												for="commentforupdate">Remarks:</label>
-											<textarea id="updatemodalformtextareacomment" name="remarks"
-												class="form-control mb-2" rows="5"></textarea>
+										
+												<input type="hidden" class="form-control" name="idtask" id="idtask" value="">
+										
+												<label for="summaryforupdate">Summary</label> 
+												<input id="updatemodalforminputsummary" name="summary" type="text" class="form-control mb-1" placeholder="Summary 01 of XX">
+												
+												<label for="startforupdate">Start</label>
+												<input id="updatemodalforminputstart" name="start" type="text" class="form-control" value="9999-12-31 23:59:59" disabled> 
+												
+												<label for="endforupdate">End</label> 
+												<input id="updatemodalforminputend" name="end" type="text" class="form-control" value="YYYY-MM-DD HH:MM:SS" disabled> 
+												
+												<label for="elapsedforupdate">Elapsed</label> 
+												<input id="updatemodalforminputelapsed" name="elapsed" type="text" class="form-control" value="9999-12-31 23:59:59" disabled> 
+												
+												<label for="commentforupdate">Remarks:</label>
+												<textarea id="updatemodalformtextareacomment" name="remarks" class="form-control mb-2" rows="5"></textarea>
 										</div>
 
 										<div class="d-flex flex-row-reverse">
@@ -170,7 +180,8 @@
 					<table class="table">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">TASK ID</th>
+								<th scope="col">ID</th>
+								<th scope="col">SUMMARY</th>
 								<th scope="col">TASK TYPE</th>
 								<th scope="col">DEPARTMENT</th>
 								<th scope="col">STARTED</th>
@@ -182,6 +193,7 @@
 						<tbody>
 							<tr>
 								<td>1</td>
+								<td>Summary XX of XX</td>
 								<td>SampleData01</td>
 								<td>SampleData02</td>
 								<td>2020-01-13 11:41:43</td>
@@ -209,11 +221,12 @@
 							<?php foreach ($tasks as $task): ?> 
         					<tr id="<?= 'taskprofile_'.$task['id']?>">
 								<td id="<?= 'taskid'?>"><?= $task['id'] ?></td>
+								<td id="<?= 'summary'?>"><?= $task['summary'] ?></td>
 								<td id="<?= 'type' ?>"><?= $task['type'] ?></td>
 								<td id="<?= 'department' ?>"><?= $task['department'] ?></td>
 								<td id="<?= 'start' ?>"><?= $task['start'] ?></td>
 								<td id="<?= 'end' ?>" style="display: none;"><?= $task['end'] ?></td>
-								<td id="<?= 'elapsed' ?>"><?= $task['elapsed']/(60*60) ?></td>
+								<td id="<?= 'elapsed' ?>"><?= $task['elapsed']?></td>
 								<td id="<?= 'status' ?>"><?= $task['status'] ?></td>
 								<td id="<?= 'remarks' ?>" style="display: none;"><?= $task['remarks'] ?></td>
 								<td>
@@ -227,23 +240,19 @@
 									<form class="d-flex flex-column justify-content-center"
 										action="/CodeIgniterProject/Task/action" method="post">
 										<?php
-    										if ($task['status'] == 'NEW') {
-                                                    $actionValue = "Start";
-                                                }
-                                            else if ($task['status'] == 'IN PROGRESS') {
-                                                    $actionValue = "Pause";                                                
-                                                } 
-                                            else if ($task['status'] == 'PAUSE') {
-                                                    $actionValue = "Start";
-                                                } 
-                                            else {
-                                                
-                                            }
-                                    
-                                        ?>
-										<input type="hidden" class="form-control" name="idtask" id="idtask" value="<?=$task['id']?>">
-										<input class="btn btn-primary btn-sm mb-1" type="submit" name="action" value="<?=$actionValue?>"/> 
-										<input class="btn btn-success btn-sm" type="submit" name="complete" value="Complete"/>
+        if ($task['status'] == 'NEW') {
+            $actionValue = "Start";
+        } else if ($task['status'] == 'IN PROGRESS') {
+            $actionValue = "Complete";
+        } else if ($task['status'] == 'COMPLETE') {
+            $actionValue = "Complete";
+        } else {}
+
+        ?>
+										<input type="hidden" class="form-control" name="idtask"
+											id="idtask" value="<?=$task['id']?>"> <input
+											class="btn btn-primary btn-sm mb-1" type="submit"
+											name="action" value="<?=$actionValue?>" />
 									</form>
 
 								</td>
