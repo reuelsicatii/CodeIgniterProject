@@ -204,7 +204,7 @@ if (isset($transactionresult)) {
 									<div class="d-flex flex-column justify-content-center">
 										<button type="button" class="btn btn-info btn-sm my-1"
 											id="updatetask" data-id="4" data-toggle="modal"
-											data-target="#updateTask">Update Task</button>
+											data-target="#updateTask">Update</button>
 									</div>
 
 
@@ -234,7 +234,7 @@ if (isset($transactionresult)) {
 									<div class="d-flex flex-column justify-content-center">
 										<button type="button" class="btn btn-info btn-sm my-1"
 											id="updatetask" data-id=<?= $task['id'] ?>
-											data-toggle="modal" data-target="#updateTask">Update Task</button>
+											data-toggle="modal" data-target="#updateTask">Update</button>
 									</div>
 
 									<form class="d-flex flex-column justify-content-center"
@@ -251,7 +251,7 @@ if (isset($transactionresult)) {
         ?>
 										<input type="hidden" class="form-control" name="idtask"
 											id="idtask" value="<?=$task['id']?>"> <input
-											class="btn btn-primary btn-sm mb-1" type="submit"
+											class="btn btn-success btn-sm mb-1" type="submit"
 											name="action" value="<?=$actionValue?>" />
 									</form>
 
