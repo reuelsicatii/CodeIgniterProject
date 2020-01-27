@@ -12,7 +12,7 @@
 
 </script>
 <link
-	href="/CodeIgniterProject/application/views/css/RegistrationForm.css"
+	href="/application/views/css/RegistrationForm.css"
 	rel="stylesheet" type="text/css" media="all" />
 
 <link
@@ -27,10 +27,10 @@
 			<div class="agileits-top">
 			<?php if (isset($message)) {
 			    echo "<CENTER><h3 style=\"color: white;\">Data inserted successfully. 
-                    Click <a href=\"/CodeIgniterProject/\">here</a> to Login</h3></CENTER><br>";
+                    Click <a href=\">here</a> to Login</h3></CENTER><br>";
 			}			
 			?>			
-				<form action="/CodeIgniterProject/Registration/add_user"
+				<form action="/Registration/add_user"
 					method="post">
 					<input class="text" type="text" name="username"
 						placeholder="Username" required=""> <input class="text email"
@@ -42,7 +42,7 @@
 						value="SIGNUP">
 				</form>
 				<p>
-					Already have an Account? <a href="/CodeIgniterProject/"> Login Now!</a>
+					Already have an Account? <a href="/"> Login Now!</a>
 				</p>
 			</div>
 		</div>

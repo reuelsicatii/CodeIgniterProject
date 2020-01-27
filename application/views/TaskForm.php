@@ -8,7 +8,7 @@
 
 <!-- Bootstrap CSS -->
 <!-- <link rel="stylesheet" -->
-<!-- 	href="/CodeIgniterProject/application/views/css/bootstrap.min.css" /> -->
+<!-- 	href="/application/views/css/bootstrap.min.css" /> -->
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,7 +16,7 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet"
-	href="/CodeIgniterProject/application/views/css/TaskForm.css">
+	href="/application/views/css/TaskForm.css">
 
 <title>Task Form</title>
 </head>
@@ -59,7 +59,7 @@ if (isset($transactionresult)) {
 
 								<!-- Modal body -->
 								<div class="modal-body">
-									<form action="/CodeIgniterProject/Task/create" method="post">
+									<form action="/Task/create" method="post">
 										<div class="form-group d-flex">
 
 											<select class="custom-select mx-1 flex-fill" name="type">
@@ -121,7 +121,7 @@ if (isset($transactionresult)) {
 
 								<!-- Modal body -->
 								<div class="modal-body">
-									<form action="/CodeIgniterProject/Task/update" method="post">
+									<form action="/Task/update" method="post">
 										<div id="updatemodalformrow1"
 											class="form-group d-inline-flex my-1">
 
@@ -209,7 +209,7 @@ if (isset($transactionresult)) {
 
 
 									<form class="d-flex flex-column justify-content-center"
-										action="/CodeIgniterProject/Task/action" method="post">
+										action="/Task/action" method="post">
 										<input class="btn btn-primary btn-sm mb-1" type="submit"
 											name="start" value="Start" /> <input
 											class="btn btn-success btn-sm" type="submit" name="complete"
@@ -238,7 +238,7 @@ if (isset($transactionresult)) {
 									</div>
 
 									<form class="d-flex flex-column justify-content-center"
-										action="/CodeIgniterProject/Task/action" method="post">
+										action="/Task/action" method="post">
 										<?php
         if ($task['status'] == 'NEW') {
             $actionValue = "Start";
@@ -279,7 +279,7 @@ if (isset($transactionresult)) {
 
 
 	</div>
-	<!-- 	<script src="/CodeIgniterProject/application/views/js/bootstrap.min.js" /></script> -->
+	<!-- 	<script src="/application/views/js/bootstrap.min.js" /></script> -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
@@ -291,7 +291,7 @@ if (isset($transactionresult)) {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
-	<script src="/CodeIgniterProject/application/views/js/Task.js"></script>
+	<script src="/application/views/js/Task.js"></script>
 </body>
 </html>
 

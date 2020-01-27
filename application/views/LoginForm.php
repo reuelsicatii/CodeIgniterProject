@@ -12,7 +12,7 @@
 
 </script>
 <link
-	href="/CodeIgniterProject/application/views/css/LoginForm.css"
+	href="/application/views/css/LoginForm.css"
 	rel="stylesheet" type="text/css" media="all" />
 
 <link
@@ -27,7 +27,7 @@
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 		
-				<form action="/CodeIgniterProject/Login/authentication"
+				<form action="/Login/authentication"
 					method="post">
 					<input class="text" type="text" name="username" placeholder="Username" required=""> 
 					<input class="text" type="password" name="password" placeholder="Password" required="">
@@ -39,7 +39,7 @@
                         }
                 ?>	              
                 <p>
-					Don't have an account? <a href="/CodeIgniterProject/Registration/add_user">Sign up (it's free).</a>
+					Don't have an account? <a href="/Registration/add_user">Sign up (it's free).</a>
 				</p>
 			</div>
 		</div>
