@@ -20,6 +20,10 @@ class Login extends CI_Controller
         // ==============================================
         $this->load->model('login_model');
         $this->load->model('task_model');
+        
+        // Load "Login_Model"
+        // ==============================================
+        $this->load->helper('url');
     }
 
     function index()

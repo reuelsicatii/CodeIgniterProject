@@ -12,7 +12,7 @@
 
 </script>
 <link
-	href="/application/views/css/LoginForm.css"
+	href="<?php echo base_url("assets/css/LoginForm.css");?>"
 	rel="stylesheet" type="text/css" media="all" />
 
 <link
