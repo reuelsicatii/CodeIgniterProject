@@ -50,7 +50,7 @@ class Task extends CI_Controller
             );
 
             if ($this->task_model->create_task($data)) {
-                redirect('Task/update');
+                redirect('Task/create');
             } else {
                 $result['transactionresult'] = FALSE;
                 $result['tasks'] = $this->task_model->get_allbyRegID($seesdata['logged_in']['regid']);

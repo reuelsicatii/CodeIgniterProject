@@ -12,7 +12,7 @@
 
 </script>
 <link
-	href="/application/views/css/RegistrationForm.css"
+	href="<?php echo base_url("assets/css/RegistrationForm.css");?>"
 	rel="stylesheet" type="text/css" media="all" />
 
 <link
@@ -26,20 +26,19 @@
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 			<?php if (isset($message)) {
-			    echo "<CENTER><h3 style=\"color: white;\">Data inserted successfully. 
-                    Click <a href=\">here</a> to Login</h3></CENTER><br>";
+			    echo "<CENTER>
+                        <h3 style=\"color: white;\">You've successfully registered. 
+                            Click <a href=".base_url().">here</a> to Login
+                        </h3></CENTER><br>";
 			}			
 			?>			
 				<form action="/Registration/add_user"
 					method="post">
-					<input class="text" type="text" name="username"
-						placeholder="Username" required=""> <input class="text email"
-						type="email" name="email" placeholder="Email" required=""> <input
-						class="text" type="password" name="password"
-						placeholder="Password" required=""> <input class="text w3lpass"
-						type="password" name="confirmpassword"
-						placeholder="Confirm Password" required=""> <input type="submit"
-						value="SIGNUP">
+					<input class="text" type="text" name="username" placeholder="Username" required=""> 
+					<input class="text email"type="email" name="email" placeholder="Email" required=""> 
+					<input class="text" type="password" name="password" placeholder="Password" required=""> 
+					<input class="text w3lpass" type="password" name="confirmpassword" placeholder="Confirm Password" required=""> 
+					<input type="submit" value="SIGNUP">
 				</form>
 				<p>
 					Already have an Account? <a href="/"> Login Now!</a>
