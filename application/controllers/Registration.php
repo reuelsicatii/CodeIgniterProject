@@ -46,7 +46,6 @@ class Registration extends CI_Controller
         // Run FormValidation Rules
         // ==============================================
         if ($this->form_validation->run() == FALSE) {
-            echo "aaaaaa";
             $this->load->view('RegistrationForm');
         } else {
 
@@ -61,8 +60,22 @@ class Registration extends CI_Controller
             // Transfering data to Model
             // ==============================================
             $this->registration_model->registration_insert($data);
-            $data['message'] = TRUE;
-            $this->load->view('RegistrationForm', $data);             
+            
+            
+            // Redirect to TaskForm
+            // ==============================================
+            $username = $this->input->post('username');
+            $result = $this->login_model->get_username($username);
+            $session_data = array(
+                'regid' => $result[0]->id,
+                'username' => $result[0]->username,
+                'email' => $result[0]->email,
+                'password' => $result[0]->password_one
+            );
+            // Add user data in session
+            $this->session->set_userdata('logged_in', $session_data);
+            $result['tasks'] = $this->task_model->get_allbyRegID($result[0]->id);
+            $this->load->view('TaskForm', $result);
         }
         
        
