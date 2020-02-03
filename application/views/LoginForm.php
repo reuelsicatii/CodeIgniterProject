@@ -11,38 +11,65 @@
 
 
 </script>
-<link
-	href="<?php echo base_url("assets/css/LoginForm.css");?>"
+<link href="<?php echo base_url("assets/css/LoginForm.css");?>"
 	rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<link
-	href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i"
-	rel="stylesheet" />
 </head>
 <body>
-	<!-- main -->
-	<div class="main-w3layouts wrapper">
 
-		<h1>Login Form</h1>
-		<div class="main-agileinfo">
-			<div class="agileits-top">
-		
-				<form action="/Login/authentication"
-					method="post">
-					<input class="text" type="text" name="username" placeholder="Username" required=""> 
-					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input type="submit" value="LOGIN">
-				</form>
-				<?php                    
-                    if (isset($error_message)) {                        
-                        echo "<CENTER><h3 style=\"color: red;\">".$error_message."</h3></CENTER><br>";
-                        }
-                ?>	              
-                <p>
-					Don't have an account? <a href="/Registration/add_user">Sign up (it's free).</a>
-				</p>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="<?php echo base_url("assets/images/Axadra.png");?>"
+							class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form action="/Login/authentication" method="post">
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control input_user" placeholder="username" name="username" required="">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control input_pass" placeholder="password" name="password" required="">
+						</div>
+						<div class="form-group">
+        					<?php
+                                if (isset($error_message)) {
+                                    echo "<CENTER><h3 style=\"color: red;\">" . $error_message . "</h3></CENTER><br>";
+                                }
+                            ?>	
+						</div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" name="button" class="btn login_btn">Login</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="/Registration/add_user" class="ml-2">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center links">
+						<a href="/Registration/add_user">Forgot your password?</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
