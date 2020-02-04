@@ -11,40 +11,63 @@
 
 
 </script>
-<link
-	href="<?php echo base_url("assets/css/RegistrationForm.css");?>"
+<link href="<?php echo base_url("assets/css/RegistrationForm.css");?>"
 	rel="stylesheet" type="text/css" media="all" />
-
-<link
-	href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i"
-	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-	<!-- main -->
-	<div class="main-w3layouts wrapper">
-		<h1>Registration Form</h1>
-		<div class="main-agileinfo">
-			<div class="agileits-top">
-			<?php if (isset($message)) {
-			    echo "<CENTER>
-                        <h3 style=\"color: white;\">You've successfully registered. 
-                            Click <a href=".base_url().">here</a> to Login
-                        </h3></CENTER><br>";
-			}			
-			?>			
-				<form action="/Registration/add_user"
-					method="post">
-					<input class="text" type="text" name="username" placeholder="Username" required=""> 
-					<input class="text email"type="email" name="email" placeholder="Email" required=""> 
-					<input class="text" type="password" name="password" placeholder="Password" required=""> 
-					<input class="text w3lpass" type="password" name="confirmpassword" placeholder="Confirm Password" required=""> 
-					<input type="submit" value="SIGNUP">
-				</form>
-				<p>
-					Already have an Account? <a href="/"> Login Now!</a>
-				</p>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="<?php echo base_url("assets/images/Axadra.png");?>"
+							class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form action="/Registration/add_user" method="post">
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control input_user"
+								placeholder="Username" name="username" required="">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="text" class="form-control input_pass"
+								placeholder="Email Address" name="email" required="">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control input_pass"
+								placeholder="Password" name="password" required="">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control input_pass"
+								placeholder="Confirm Password" name="confirmpassword" required="">
+						</div>
+						<div class="d-flex justify-content-center mt-3 registration_container">
+							<button type="submit" name="button" class="btn registration_btn">SIGN UP</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
