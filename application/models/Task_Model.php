@@ -79,6 +79,7 @@ class Task_Model extends CI_Model
         $this->db->select('*');
         $this->db->from('task');
         $this->db->where($condition);
+        $this->db->order_by('id', 'DESC');
         $query = $this->db->get();
 
         return $query->result_array();
