@@ -41,10 +41,15 @@ if (isset($transactionresult)) {
 
 		<div class="row d-flex">
 			<div class="col-sm">
+				<form class="d-flex flex-row-reverse"
+					action="/Logout" method="post">
+					<button type="submit" class="btn btn-primary">LOGOUT</button>
+				</form>
 				<div class="row py-1">
 					<!-- Button to Open the Modal -->
 					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#createTask">Create Task</button>
+
 
 					<!-- The Modal:createTask -->
 					<div class="modal" id="createTask">
@@ -77,23 +82,20 @@ if (isset($transactionresult)) {
 
 										</div>
 										<div class="form-group my-1">
-											<label for="status">Summary</label> 
-											<input type="text" class="form-control mb-1" placeholder="Summary xx of XX" name="summary"> 
-												
-											<label for="status">Status</label> 
-											<input type="text" class="form-control mb-1" value="New" disabled> 
-												
-											<label for="start">Start</label> 
-											<input type="text" class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS" disabled> 
-												
-											<label for="end">End</label> 
-											<input type="text" class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS" disabled> 
-												
-											<label for="elapsed">Elapsed(Hrs)</label> 
-											<input type="text" class="form-control mb-1" value="HH:MM:SS" disabled> 
-												
-											<label for="commentforcreate">Remarks:</label>
-											<textarea class="form-control mb-3" rows="5" id="createmodalformtextareacomment" name="remarks"></textarea>
+											<label for="status">Summary</label> <input type="text"
+												class="form-control mb-1" placeholder="Summary xx of XX"
+												name="summary"> <label for="status">Status</label> <input
+												type="text" class="form-control mb-1" value="New" disabled>
+
+											<label for="start">Start</label> <input type="text"
+												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
+												disabled> <label for="end">End</label> <input type="text"
+												class="form-control mb-1" value="YYYY-MM-DD HH:MM:SS"
+												disabled> <label for="elapsed">Elapsed(Hrs)</label> <input
+												type="text" class="form-control mb-1" value="HH:MM:SS"
+												disabled> <label for="commentforcreate">Remarks:</label>
+											<textarea class="form-control mb-3" rows="5"
+												id="createmodalformtextareacomment" name="remarks"></textarea>
 
 										</div>
 
@@ -142,23 +144,23 @@ if (isset($transactionresult)) {
 												value="start" disabled />
 										</div>
 										<div id="updatemodalformrow2" class="form-group my-1">
-										
-												<input type="hidden" class="form-control" name="idtask" id="idtask" value="">
-										
-												<label for="summaryforupdate">Summary</label> 
-												<input id="updatemodalforminputsummary" name="summary" type="text" class="form-control mb-1" placeholder="Summary 01 of XX">
-												
-												<label for="startforupdate">Start</label>
-												<input id="updatemodalforminputstart" name="start" type="text" class="form-control" value="9999-12-31 23:59:59" disabled> 
-												
-												<label for="endforupdate">End</label> 
-												<input id="updatemodalforminputend" name="end" type="text" class="form-control" value="YYYY-MM-DD HH:MM:SS" disabled> 
-												
-												<label for="elapsedforupdate">Elapsed</label> 
-												<input id="updatemodalforminputelapsed" name="elapsed" type="text" class="form-control" value="9999-12-31 23:59:59" disabled> 
-												
-												<label for="commentforupdate">Remarks:</label>
-												<textarea id="updatemodalformtextareacomment" name="remarks" class="form-control mb-2" rows="5"></textarea>
+
+											<input type="hidden" class="form-control" name="idtask"
+												id="idtask" value=""> <label for="summaryforupdate">Summary</label>
+											<input id="updatemodalforminputsummary" name="summary"
+												type="text" class="form-control mb-1"
+												placeholder="Summary 01 of XX"> <label for="startforupdate">Start</label>
+											<input id="updatemodalforminputstart" name="start"
+												type="text" class="form-control" value="9999-12-31 23:59:59"
+												disabled> <label for="endforupdate">End</label> <input
+												id="updatemodalforminputend" name="end" type="text"
+												class="form-control" value="YYYY-MM-DD HH:MM:SS" disabled> <label
+												for="elapsedforupdate">Elapsed</label> <input
+												id="updatemodalforminputelapsed" name="elapsed" type="text"
+												class="form-control" value="9999-12-31 23:59:59" disabled> <label
+												for="commentforupdate">Remarks:</label>
+											<textarea id="updatemodalformtextareacomment" name="remarks"
+												class="form-control mb-2" rows="5"></textarea>
 										</div>
 
 										<div class="d-flex flex-row-reverse">
@@ -192,13 +194,13 @@ if (isset($transactionresult)) {
 						</thead>
 						<tbody>
 							<tr>
-								<td>1</td>
-								<td>Summary XX of XX</td>
-								<td>SampleData01</td>
-								<td>SampleData02</td>
-								<td>2020-01-13 11:41:43</td>
-								<td>09:41:43</td>
-								<td>COMPLETED</td>
+								<td class="text-white">1</td>
+								<td class="text-white">Summary XX of XX</td>
+								<td class="text-white">SampleData01</td>
+								<td class="text-white">SampleData02</td>
+								<td class="text-white">2020-01-13 11:41:43</td>
+								<td class="text-white">09:41:43</td>
+								<td class="text-white">COMPLETED</td>
 								<td>
 
 									<div class="d-flex flex-column justify-content-center">
@@ -220,14 +222,14 @@ if (isset($transactionresult)) {
 							</tr>
 							<?php foreach ($tasks as $task): ?> 
         					<tr id="<?= 'taskprofile_'.$task['id']?>">
-								<td id="<?= 'taskid'?>"><?= $task['id'] ?></td>
-								<td id="<?= 'summary'?>"><?= $task['summary'] ?></td>
-								<td id="<?= 'type' ?>"><?= $task['type'] ?></td>
-								<td id="<?= 'department' ?>"><?= $task['department'] ?></td>
-								<td id="<?= 'start' ?>"><?= $task['start'] ?></td>
+								<td id="<?= 'taskid'?>" class="text-white"><?= $task['id'] ?></td>
+								<td id="<?= 'summary'?>" class="text-white"><?= $task['summary'] ?></td>
+								<td id="<?= 'type' ?>" class="text-white"><?= $task['type'] ?></td>
+								<td id="<?= 'department' ?>" class="text-white"><?= $task['department'] ?></td>
+								<td id="<?= 'start' ?>" class="text-white"><?= $task['start'] ?></td>
 								<td id="<?= 'end' ?>" style="display: none;"><?= $task['end'] ?></td>
-								<td id="<?= 'elapsed' ?>"><?= $task['elapsed']?></td>
-								<td id="<?= 'status' ?>"><?= $task['status'] ?></td>
+								<td id="<?= 'elapsed' ?>" class="text-white"><?= $task['elapsed']?></td>
+								<td id="<?= 'status' ?>" class="text-white"><?= $task['status'] ?></td>
 								<td id="<?= 'remarks' ?>" style="display: none;"><?= $task['remarks'] ?></td>
 								<td>
 
