@@ -72,12 +72,19 @@ if (isset($transactionresult)) {
 												<option value="Bank Transaction">Bank Transaction</option>
 												<option value="Collection">Collection</option>
 												<option value="Govt Transaction">Govt Transaction</option>
+												<option value="Cleaning">Cleaning</option>
+												<option value="Grocery">Grocery</option>
+												<option value="Supplies Replenishment">Supplies Replenishment</option>
+												<option value="Meeting">Meeting</option>
 											</select> <select class="custom-select mx-1 flex-fill"
 												name="department">
 												<option selected>Department</option>
 												<option value="Accounting">Accounting</option>
 												<option value="HR and Admin">HR and Admin</option>
+												<option value="IT">IT</option>
 												<option value="Payroll">Payroll</option>
+												<option value="Executive">Executive</option>
+												<option value="Production">Production</option>
 											</select>
 
 										</div>
