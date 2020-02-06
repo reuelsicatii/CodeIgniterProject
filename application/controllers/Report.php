@@ -34,7 +34,8 @@ class Report extends CI_Controller
     {
         if (isset($this->session->userdata['logged_in'])) {
 
-            $result['tasks'] = $this->report_model->get_recenttask();
+            $result['tasks'] = $this->report_model->get_recenttasks();
+            $result['users'] = $this->report_model->get_users();
             $this->load->view('ReportForm', $result);
             
         } else {

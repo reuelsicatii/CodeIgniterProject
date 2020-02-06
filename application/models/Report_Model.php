@@ -12,7 +12,7 @@ class Report_Model extends CI_Model
         $this->load->database();
     }
 
-    function get_recenttask()
+    function get_recenttasks()
     {
 
         $this->db->select('*');
@@ -21,6 +21,16 @@ class Report_Model extends CI_Model
         $this->db->order_by('id', 'DESC');
         $query = $this->db->get();
 
+        return $query->result_array();
+    }
+    
+    function get_users()
+    {
+        
+        $this->db->select('email');
+        $this->db->from('registration');
+        $query = $this->db->get();
+        
         return $query->result_array();
     }
 
