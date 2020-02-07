@@ -53,20 +53,18 @@
 						<button type="button" class="btn btn-primary">Download</button>
 					</div>
 					<div class="col-sm-10 d-flex justify-content-end">
-					<form class="form-inline" action="/Task/create" method="post">
+					<form class="form-inline" action="/Report" method="post">
 
 							 
-							<select class="custom-select mx-1" name="type">
+							<select class="custom-select mx-1" name="email">
 								<option selected>Email Address</option>
 								<?php foreach ($users as $user): ?>								
 								<option value="<?= $user['email']?>"><?= $user['email']?></option>
 								<?php endforeach; ?>
 							</select> 
-							<div class='input-group date mx-1' id='datetimepicker'>
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+							<div class='input-group'>
+                                <input type='text' class="form-control mx-1" id='fromdatepicker' name='fromdatepicker' />
+                                <input type='text' class="form-control mx-1" id='todatepicker' name='todatepicker'/>
                         	</div>
 							<button type="submit" class="btn btn-primary ml-1">Search</button>
 	

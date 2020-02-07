@@ -27,21 +27,34 @@ class Report extends CI_Controller
 
     function index()
     {
-        $this->search();
+        $this->recenttasks();
+        
+        if ($this->input->post('email') && $this->input->post('fromdatepicker') && $this->input->post('todatepicker')){
+            $this->searchtasks();
+        }
     }
 
-    function search()
+    function recenttasks()
     {
         if (isset($this->session->userdata['logged_in'])) {
 
             $result['tasks'] = $this->report_model->get_recenttasks();
             $result['users'] = $this->report_model->get_users();
             $this->load->view('ReportForm', $result);
-            
         } else {
 
             $this->load->view('LoginForm');
         }
+    }
+
+    function searchtasks()
+    {
+        echo $this->input->post('email');
+        echo $this->input->post('fromdatepicker');
+        echo $this->input->post('todatepicker');
+        
+        exit();
+        
     }
 }
 
